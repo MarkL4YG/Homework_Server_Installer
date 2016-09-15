@@ -1,0 +1,3 @@
+[submodule "submodules/javacommon"]
+	path = submodules/javacommon
+	url = https://github.com/MarkL4YG/javacommon
