@@ -1,0 +1,32 @@
+group 'de.mlessmann'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.11'
+
+    compile project(':javacommon')
+    compile 'org.json:json:20160212'
+}
+
+//noinspection GroovyAssignabilityCheck
+jar {
+
+    name = 'Homework_Server_Installer.jar'
+
+    manifest {
+
+        attributes 'Main-Class': 'main.InstallerMain'
+        attributes 'Class-Path': configurations.compile.collect { "libraries/" + it.getName() }.join(' ')
+
+    }
+
+}
