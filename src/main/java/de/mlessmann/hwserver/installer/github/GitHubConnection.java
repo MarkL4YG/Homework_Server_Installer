@@ -1,6 +1,8 @@
 package de.mlessmann.hwserver.installer.github;
 
 import de.mlessmann.common.HTTP;
+import de.mlessmann.common.annotations.Nullable;
+import de.mlessmann.hwserver.installer.IRelease;
 import de.mlessmann.logging.ILogReceiver;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -16,7 +18,7 @@ import java.util.logging.Level;
 public class GitHubConnection {
 
     private String url;
-    private List<GitHubRelease> releases;
+    private List<IRelease> releases;
     private ILogReceiver r;
 
     public GitHubConnection(ILogReceiver r) {
@@ -76,6 +78,10 @@ public class GitHubConnection {
         }
         releases.add(new GitHubRelease(j));
         return true;
+    }
+
+    public List<IRelease> getReleases() {
+        return releases;
     }
 
 }
