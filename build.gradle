@@ -13,20 +13,23 @@ repositories {
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.11'
 
-    compile project(':javacommon')
-    compile 'org.json:json:20160212'
-}
+    compile project(':javacommon') }
 
 //noinspection GroovyAssignabilityCheck
 jar {
-
-    name = 'Homework_Server_Installer.jar'
+    archiveName = 'Homework_Server_Installer.jar'
 
     manifest {
-
         attributes 'Main-Class': 'main.InstallerMain'
         attributes 'Class-Path': configurations.compile.collect { "libraries/" + it.getName() }.join(' ')
-
     }
-
 }
+
+task copyRuntimeLibs(type: Copy) {
+    into "build/libs/libraries"
+
+    from configurations.runtime
+}
+
+//noinspection GroovyAssignabilityCheck
+build.finalizedBy(copyRuntimeLibs)
