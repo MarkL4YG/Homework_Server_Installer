@@ -17,7 +17,7 @@ dependencies {
 
 //noinspection GroovyAssignabilityCheck
 jar {
-    archiveName = 'Homework_Server_Installer.jar'
+    archiveName = 'installer.jar'
 
     manifest {
         attributes 'Main-Class': 'main.InstallerMain'

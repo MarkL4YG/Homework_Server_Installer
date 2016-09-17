@@ -1,5 +1,6 @@
 package main;
 
+import de.mlessmann.common.apparguments.AppArgument;
 import de.mlessmann.common.zip.Unzip;
 
 import java.io.BufferedReader;
@@ -16,6 +17,15 @@ import java.util.logging.Logger;
 public class InstallerMain {
 
     public static void main(String[] args) {
+
+        List<AppArgument> appArgs = AppArgument.fromArray(args);
+        appArgs.forEach(a -> {
+            String k = a.getKey();
+            String v = a.getValue();
+            switch (k) {
+                case "--delay": delay(v); break;
+            }
+        });
 
         File zipFile = new File("cache/update/update.zip");
         if (!zipFile.isFile()) {
@@ -60,5 +70,13 @@ public class InstallerMain {
             System.exit(1);
         }
         System.exit(0);
+    }
+
+    public static void delay(String d) {
+        try {
+            Thread.sleep(Integer.parseInt(d));
+        } catch (InterruptedException e) {
+
+        }
     }
 }
