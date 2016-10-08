@@ -1,6 +1,6 @@
 package de.mlessmann.upgrades;
 
-import de.mlessmann.common.Common;
+import de.mlessmann.common.FileUtils;
 import de.mlessmann.common.zip.Unzip;
 import de.mlessmann.logging.ILogReceiver;
 import org.json.JSONArray;
@@ -139,7 +139,7 @@ public class Installer {
         File fFrom = new File(from);
         File fTo = new File(to);
         try {
-            Common.copyFile(fFrom, fTo);
+            FileUtils.copyFile(fFrom, fTo);
         } catch (IOException e) {
             String msg = "Unable to run copyTask: " + from + "->" + to + ": " + e.toString();
             log.onMessage(this, Level.SEVERE, msg);
