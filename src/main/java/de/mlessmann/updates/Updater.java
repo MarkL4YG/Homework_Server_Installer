@@ -154,7 +154,7 @@ public class Updater {
             if (rev != null && !rev.isEmpty()) {
                 jIndex = jFull.optJSONObject(jFull.optString(rev));
                 if (jIndex == null) {
-                    log.onMessage(this, SEVERE, "Invalid config: Revision not found!");
+                    log.onMessage(this, SEVERE, "Invalid config: Revision \""+rev+"\" not found!");
                     return false;
                 }
             } else {
