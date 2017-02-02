@@ -7,11 +7,15 @@ sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
 repositories {
+    mavenLocal()
+    maven {
+        url uri('https://maven.fearnixx.de/maven2')
+    }
     mavenCentral()
 }
 
 dependencies {
-    compile project(':javacommon')
+    compile 'de.mlessmann:javacommon:2.1.0'
     compile group:'org.reflections', name:'reflections', version:'0.9.10'
     compile group:'org.json', name:'json', version:'20160810'
 
